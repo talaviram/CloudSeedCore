@@ -23,6 +23,7 @@ THE SOFTWARE.
 #pragma once
 
 #include <vector>
+#include "config.h"
 #include "ModulatedAllpass.h"
 #include "RandomBuffer.h"
 
@@ -126,7 +127,7 @@ namespace Cloudseed
 
 		void Process(float* input, float* output, int bufSize)
 		{
-			float tempBuffer[BUFFER_SIZE];
+			float tempBuffer[MAX_BUFFER_SIZE];
 
 			filters[0].Process(input, tempBuffer, bufSize);
 

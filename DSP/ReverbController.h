@@ -86,12 +86,12 @@ namespace Cloudseed
 
 		void Process(float* inL, float* inR, float* outL, float* outR, int bufSize)
 		{
-			float outLTemp[BUFFER_SIZE];
-			float outRTemp[BUFFER_SIZE];
+			float outLTemp[MAX_BUFFER_SIZE];
+			float outRTemp[MAX_BUFFER_SIZE];
 
 			while (bufSize > 0)
 			{
-				int subBufSize = bufSize > BUFFER_SIZE ? BUFFER_SIZE : bufSize;
+				int subBufSize = bufSize > MAX_BUFFER_SIZE ? MAX_BUFFER_SIZE : bufSize;
 				ProcessChunk(inL, inR, outLTemp, outRTemp, subBufSize);
 				Utils::Copy(outL, outLTemp, subBufSize);
 				Utils::Copy(outR, outRTemp, subBufSize);
@@ -106,8 +106,8 @@ namespace Cloudseed
 	private:
 		void ProcessChunk(float* inL, float* inR, float* outL, float* outR, int bufSize)
 		{
-			float leftChannelIn[BUFFER_SIZE];
-			float rightChannelIn[BUFFER_SIZE];
+			float leftChannelIn[MAX_BUFFER_SIZE];
+			float rightChannelIn[MAX_BUFFER_SIZE];
 
 			float inputMix = ScaleParam(parameters[Parameter::InputMix], Parameter::InputMix);
 			float cm = inputMix * 0.5;

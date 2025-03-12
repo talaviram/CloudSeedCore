@@ -116,7 +116,7 @@ namespace Cloudseed
 		Biquad lowShelf;
 		Biquad highShelf;
 		Lp1 lowPass;
-		CircularBuffer<2*BUFFER_SIZE> feedbackBuffer;
+		CircularBuffer<2*MAX_BUFFER_SIZE> feedbackBuffer;
 		float feedback;
 
 	public:
@@ -241,7 +241,7 @@ namespace Cloudseed
 
 		void Process(float* input, float* output, int bufSize)
 		{
-			float tempBuffer[BUFFER_SIZE];
+			float tempBuffer[MAX_BUFFER_SIZE];
 			feedbackBuffer.Pop(tempBuffer, bufSize);
 
 			for (int i = 0; i < bufSize; i++)

@@ -11,8 +11,14 @@ add_executable(CloudSeedDemo
     PluginProcessor.cpp
 )
 
-target_compile_definitions(CloudSeedCore PUBLIC
-    BUFFER_SIZE=1024
+set(CLOUDSEED_MAX_BUFFER_SIZE 1024 CACHE STRING "Maximum allocated and supported buffer size for CloudSeedCore")
+
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/include/config.h
+)
+
+include_directories(PRIVATE CLoudSeedCore
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_compile_definitions(CloudSeedDemo PUBLIC

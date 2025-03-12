@@ -314,10 +314,10 @@ namespace Cloudseed
 
 		void Process(float* input, float* output, int bufSize)
 		{
-			float tempBuffer[BUFFER_SIZE];
-			float earlyOutBuffer[BUFFER_SIZE];
-			float lineOutBuffer[BUFFER_SIZE];
-			float lineSumBuffer[BUFFER_SIZE];
+			float tempBuffer[MAX_BUFFER_SIZE];
+			float earlyOutBuffer[MAX_BUFFER_SIZE];
+			float lineOutBuffer[MAX_BUFFER_SIZE];
+			float lineSumBuffer[MAX_BUFFER_SIZE];
 
 			Utils::Copy(tempBuffer, input, bufSize);
 
