@@ -179,6 +179,7 @@ namespace Cloudseed
     inline void FormatParameter(float val, int maxLen, int paramId, char* buffer)
     {
         double s = ScaleParam(val, paramId);
+        const auto maxLenTerminated = maxLen - 1;
 
         switch (paramId)
         {
@@ -192,9 +193,9 @@ namespace Cloudseed
         case Parameter::EqLowpassEnabled:
         case Parameter::EarlyDiffuseEnabled:
             if (ScaleParam(val, paramId) == 1)
-                strcpy_s(buffer, maxLen, "ENABLED");
+                strncpy(buffer, "ENABLED", maxLenTerminated);
             else
-                strcpy_s(buffer, maxLen, "DISABLED");
+                strncpy(buffer, "ENABLED", maxLenTerminated);
             break;
 
         case Parameter::InputMix:
@@ -224,7 +225,7 @@ namespace Cloudseed
         case Parameter::EarlyOut:
         case Parameter::LateOut:
             if (s <= -30)
-                strcpy_s(buffer, maxLen, "MUTED");
+                strncpy(buffer, "MUTED", maxLenTerminated);
             else
                 snprintf(buffer, maxLen, "%.1f dB", s);
             break;
@@ -255,9 +256,9 @@ namespace Cloudseed
 
         case Parameter::LateMode:
             if (s == 1)
-                strcpy_s(buffer, maxLen, "POST");
+                strncpy(buffer, "POST", maxLenTerminated);
             else
-                strcpy_s(buffer, maxLen, "PRE");
+                strncpy(buffer, "PRE", maxLenTerminated);
             break;
 
         case Parameter::EarlyDiffuseModAmount:
