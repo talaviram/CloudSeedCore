@@ -13,6 +13,9 @@ add_executable(CloudSeedDemo
 
 target_compile_definitions(CloudSeedCore PUBLIC
     BUFFER_SIZE=1024
+)
+
+target_compile_definitions(CloudSeedDemo PUBLIC
     MAX_STR_SIZE=32
 )
 

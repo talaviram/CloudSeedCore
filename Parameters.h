@@ -192,9 +192,9 @@ namespace Cloudseed
         case Parameter::EqLowpassEnabled:
         case Parameter::EarlyDiffuseEnabled:
             if (ScaleParam(val, paramId) == 1)
-                strcpy_s(buffer, MAX_STR_SIZE, "ENABLED");
+                strcpy_s(buffer, maxLen, "ENABLED");
             else
-                strcpy_s(buffer, MAX_STR_SIZE, "DISABLED");
+                strcpy_s(buffer, maxLen, "DISABLED");
             break;
 
         case Parameter::InputMix:
@@ -202,14 +202,14 @@ namespace Cloudseed
         case Parameter::TapDecay:
         case Parameter::LateDiffuseFeedback:
         case Parameter::EqCrossSeed:
-            snprintf(buffer, MAX_STR_SIZE, "%d%%", (int)(s * 100));
+            snprintf(buffer, maxLen, "%d%%", (int)(s * 100));
             break;
 
         case Parameter::SeedTap:
         case Parameter::SeedDiffusion:
         case Parameter::SeedDelay:
         case Parameter::SeedPostDiffusion:
-            snprintf(buffer, MAX_STR_SIZE, "%03d", (int)s);
+            snprintf(buffer, maxLen, "%03d", (int)s);
             break;
 
         case Parameter::LowCut:
@@ -217,23 +217,23 @@ namespace Cloudseed
         case Parameter::EqLowFreq:
         case Parameter::EqHighFreq:
         case Parameter::EqCutoff:
-            snprintf(buffer, MAX_STR_SIZE, "%d Hz", (int)s);
+            snprintf(buffer, maxLen, "%d Hz", (int)s);
             break;
 
         case Parameter::DryOut:
         case Parameter::EarlyOut:
         case Parameter::LateOut:
             if (s <= -30)
-                strcpy_s(buffer, MAX_STR_SIZE, "MUTED");
+                strcpy_s(buffer, maxLen, "MUTED");
             else
-                snprintf(buffer, MAX_STR_SIZE, "%.1f dB", s);
+                snprintf(buffer, maxLen, "%.1f dB", s);
             break;
 
         case Parameter::TapCount:
         case Parameter::EarlyDiffuseCount:
         case Parameter::LateLineCount:
         case Parameter::LateDiffuseCount:
-            snprintf(buffer, MAX_STR_SIZE, "%d", (int)s);
+            snprintf(buffer, maxLen, "%d", (int)s);
             break;
 
         case Parameter::TapPredelay:
@@ -241,44 +241,44 @@ namespace Cloudseed
         case Parameter::EarlyDiffuseDelay:
         case Parameter::LateLineSize:
         case Parameter::LateDiffuseDelay:
-            snprintf(buffer, MAX_STR_SIZE, "%d ms", (int)s);
+            snprintf(buffer, maxLen, "%d ms", (int)s);
             break;
 
         case Parameter::LateLineDecay:
             if (s < 1)
-                snprintf(buffer, MAX_STR_SIZE, "%d ms", (int)(s * 1000));
+                snprintf(buffer, maxLen, "%d ms", (int)(s * 1000));
             else if (s < 10)
-                snprintf(buffer, MAX_STR_SIZE, "%.2f sec", s);
+                snprintf(buffer, maxLen, "%.2f sec", s);
             else
-                snprintf(buffer, MAX_STR_SIZE, "%.1f sec", s);
+                snprintf(buffer, maxLen, "%.1f sec", s);
             break;
 
         case Parameter::LateMode:
             if (s == 1)
-                strcpy_s(buffer, MAX_STR_SIZE, "POST");
+                strcpy_s(buffer, maxLen, "POST");
             else
-                strcpy_s(buffer, MAX_STR_SIZE, "PRE");
+                strcpy_s(buffer, maxLen, "PRE");
             break;
 
         case Parameter::EarlyDiffuseModAmount:
         case Parameter::LateLineModAmount:
         case Parameter::LateDiffuseModAmount:
-            snprintf(buffer, MAX_STR_SIZE, "%d%%", (int)(s * 100));
+            snprintf(buffer, maxLen, "%d%%", (int)(s * 100));
             break;
 
         case Parameter::EarlyDiffuseModRate:
         case Parameter::LateLineModRate:
         case Parameter::LateDiffuseModRate:
-            snprintf(buffer, MAX_STR_SIZE, "%.2f Hz", s);
+            snprintf(buffer, maxLen, "%.2f Hz", s);
             break;
 
         case Parameter::EqLowGain:
         case Parameter::EqHighGain:
-            snprintf(buffer, MAX_STR_SIZE, "%.1f dB", s);
+            snprintf(buffer, maxLen, "%.1f dB", s);
             break;
 
         default:
-            snprintf(buffer, MAX_STR_SIZE, "%.2f", s);
+            snprintf(buffer, maxLen, "%.2f", s);
         }
     }
 }
