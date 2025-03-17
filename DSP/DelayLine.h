@@ -44,7 +44,7 @@ namespace Cloudseed
 
 		void Reset()
 		{
-			for (int i = 0; i < N; i++)
+			for (unsigned int i = 0; i < N; i++)
 				buffer[i] = 0.0f;
 			idxRead = 0;
 			idxWrite = 0;
@@ -56,7 +56,7 @@ namespace Cloudseed
 			return count;
 		}
 
-		int PushZeros(float* data, int bufSize)
+		int PushZeros(float* /*data*/, int bufSize)
 		{
 			int countBefore = count;
 			for (int i = 0; i < bufSize; i++)
@@ -79,7 +79,7 @@ namespace Cloudseed
 				buffer[idxWrite] = data[i];
 				idxWrite = (idxWrite + 1) % N;
 				count++;
-				if (count >= N)
+				if (count >= (int)N)
 					break; // overflow
 			}
 

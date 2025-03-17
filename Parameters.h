@@ -83,11 +83,11 @@ namespace Cloudseed
         const int SeedPostDiffusion = 44;
 
         const int COUNT = 45;
-    };
+    }
 
     extern const char* ParameterLabel[Parameter::COUNT];
 
-    inline double ScaleParam(double val, int index)
+    inline float ScaleParam(float val, int index)
     {
         switch (index)
         {
@@ -100,7 +100,7 @@ namespace Cloudseed
         case Parameter::EqHighShelfEnabled:
         case Parameter::EqLowpassEnabled:
         case Parameter::EarlyDiffuseEnabled:
-            return val < 0.5 ? 0.0 : 1.0;
+            return val < 0.5f ? 0.0f : 1.0f;
 
         case Parameter::InputMix:
         case Parameter::EarlyDiffuseFeedback:
@@ -137,7 +137,7 @@ namespace Cloudseed
         case Parameter::EarlyDiffuseDelay:
             return 10 + val * 90;
         case Parameter::EarlyDiffuseModAmount:
-            return val * 2.5;
+            return val * 2.5f;
         case Parameter::EarlyDiffuseModRate:
             return Utils::Resp2dec(val) * 5;
 
@@ -150,13 +150,13 @@ namespace Cloudseed
         case Parameter::LateLineSize:
             return 20 + Utils::Resp2dec(val) * 980;
         case Parameter::LateLineModAmount:
-            return val * 2.5;
+            return val * 2.5f;
         case Parameter::LateDiffuseDelay:
             return 10 + val * 90;
         case Parameter::LateDiffuseModAmount:
-            return val * 2.5;
+            return val * 2.5f;
         case Parameter::LateLineDecay:
-            return 0.05 + Utils::Resp3dec(val) * 59.95;
+            return 0.05f + Utils::Resp3dec(val) * 59.95f;
         case Parameter::LateLineModRate:
             return Utils::Resp2dec(val) * 5;
         case Parameter::LateDiffuseModRate:
