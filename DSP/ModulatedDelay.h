@@ -105,7 +105,7 @@ namespace Cloudseed
 			if (modPhase > 1)
 				modPhase = std::fmod(modPhase, 1.0f);
 
-			auto mod = std::sinf(static_cast<float>(modPhase * 2 * M_PI));
+			auto mod = sinf(static_cast<float>(modPhase * 2 * M_PI));
 			auto totalDelay = SampleDelay + ModAmount * mod;
 
 			auto delayA = (int)totalDelay;

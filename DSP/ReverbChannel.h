@@ -377,7 +377,7 @@ namespace Cloudseed
 	private:
 		float GetPerLineGain()
 		{
-			return 1.0f / std::sqrtf(lineCount);
+			return 1.0f / sqrtf(lineCount);
 		}
 
 		void UpdateLines()
