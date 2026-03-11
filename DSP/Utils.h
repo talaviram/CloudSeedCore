@@ -25,6 +25,7 @@ THE SOFTWARE.
 #define _USE_MATH_DEFINES 1
 #include <math.h>
 #include <stdint.h>
+#include <string.h>
 
 namespace Cloudseed
 {
@@ -33,8 +34,7 @@ namespace Cloudseed
         template<typename T>
         inline void ZeroBuffer(T* buffer, int len)
         {
-            for (int i = 0; i < len; i++)
-                buffer[i] = 0;
+            memset(buffer, 0, len * sizeof(T));
         }
 
         template<typename T>
